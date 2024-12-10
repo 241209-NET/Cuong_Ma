@@ -1,0 +1,15 @@
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\bin\Debug\net8.0\Basic CSharp.exe
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\bin\Debug\net8.0\Basic CSharp.deps.json
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\bin\Debug\net8.0\Basic CSharp.runtimeconfig.json
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\bin\Debug\net8.0\Basic CSharp.dll
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\bin\Debug\net8.0\Basic CSharp.pdb
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\Basic CSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\Basic CSharp.AssemblyInfoInputs.cache
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\Basic CSharp.AssemblyInfo.cs
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\Basic CSharp.csproj.CoreCompileInputs.cache
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\Basic CSharp.sourcelink.json
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\Basic CSharp.dll
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\refint\Basic CSharp.dll
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\Basic CSharp.pdb
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\Basic CSharp.genruntimeconfig.cache
+C:\Users\cminh\Documents\Revature dotnet training\Cuong_Ma\week1\Basic CSharp\obj\Debug\net8.0\ref\Basic CSharp.dll

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basic CSharp", "Basic CShar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hello World", "Hello World\Hello World.csproj", "{A831D02C-444F-4172-92FE-592D48E66403}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniProject", "MiniProject\MiniProject.csproj", "{71035C79-59A7-4982-8F24-5ED2F20C5016}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A831D02C-444F-4172-92FE-592D48E66403}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A831D02C-444F-4172-92FE-592D48E66403}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A831D02C-444F-4172-92FE-592D48E66403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71035C79-59A7-4982-8F24-5ED2F20C5016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71035C79-59A7-4982-8F24-5ED2F20C5016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71035C79-59A7-4982-8F24-5ED2F20C5016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71035C79-59A7-4982-8F24-5ED2F20C5016}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

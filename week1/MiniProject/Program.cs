@@ -156,6 +156,8 @@ namespace MiniProject
             public int HandValueCheck(List<Card> hand)
             {
                 int handValue = 0;
+                int aceCount = 0;
+
                 foreach (Card card in hand)
                 {
                     if (int.TryParse(card.Value, out int numericValue))
@@ -168,9 +170,23 @@ namespace MiniProject
                     }
                     else if (card.Value == "Ace")
                     {
+                        aceCount++;
+                    }
+                }
+
+                // Then, process Aces
+                for (int i = 0; i < aceCount; i++)
+                {
+                    if (handValue + 11 > 21)
+                    {
+                        handValue += 1;
+                    }
+                    else
+                    {
                         handValue += 11;
                     }
                 }
+
                 return handValue;
             }
 

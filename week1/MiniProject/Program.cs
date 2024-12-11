@@ -25,7 +25,7 @@ namespace MiniProject
             public void Generate()
             {
                 string[] values =
-                {
+                [
                     "Ace",
                     "2",
                     "3",
@@ -39,7 +39,7 @@ namespace MiniProject
                     "Jack",
                     "Queen",
                     "King",
-                };
+                ];
 
                 foreach (string value in values)
                 {
@@ -71,7 +71,7 @@ namespace MiniProject
         {
             List<Card> playerHand = [];
             List<Card> dealerHand = [];
-            Deck deck = new Deck();
+            Deck deck = new();
 
             public void Start()
             {

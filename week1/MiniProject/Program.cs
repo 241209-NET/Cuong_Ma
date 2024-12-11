@@ -15,12 +15,7 @@ namespace MiniProject
 
         public class Card
         {
-            public string Value { get; set; }
-
-            public Card(string value)
-            {
-                Value = value;
-            }
+            public required string Value { get; set; }
         }
 
         public class Deck
@@ -50,7 +45,7 @@ namespace MiniProject
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        cards.Add(new Card(value));
+                        cards.Add(new Card { Value = value });
                     }
                 }
             }

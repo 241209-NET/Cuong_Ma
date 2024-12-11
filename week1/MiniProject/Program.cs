@@ -65,7 +65,10 @@ namespace MiniProject
                     cards.RemoveAt(randomIndex);
                     return card;
                 }
-                return null;
+                else
+                {
+                    return null;
+                }
             }
         }
 

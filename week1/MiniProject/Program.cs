@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MiniProject
 {
@@ -7,7 +8,12 @@ namespace MiniProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to CSharp BlackJack!");
+            Console.WriteLine("\nWelcome to CSharp BlackJack!");
+            GameStart();
+        }
+
+        public static void GameStart()
+        {
             BlackJackGame game = new BlackJackGame();
             game.Start();
             game.Choice();
@@ -75,7 +81,7 @@ namespace MiniProject
 
             public void Start()
             {
-                System.Console.WriteLine("Game Starts!");
+                System.Console.WriteLine("\nGame Starts!\n");
 
                 deck.Generate();
 
@@ -94,7 +100,7 @@ namespace MiniProject
 
             public void Choice()
             {
-                System.Console.WriteLine("Please Choose: 'Hit', 'Stand', or 'Quit'");
+                System.Console.WriteLine("\nPlease Choose: 'Hit', 'Stand', or 'Quit'");
 
                 string? playerChoice = Console.ReadLine()?.ToLower();
                 if (playerChoice != "hit" && playerChoice != "stand" && playerChoice != "quit")
@@ -102,38 +108,47 @@ namespace MiniProject
                     System.Console.WriteLine("That is not a valid input, please choose again.");
                     Choice();
                 }
-                if (playerChoice == "hit")
+                else if (playerChoice == "hit")
                 {
                     playerHand.Add(deck.Draw());
-                    System.Console.WriteLine($"You drew: {playerHand[playerHand.Count - 1].Value}");
+                    System.Console.WriteLine(
+                        $"{Environment.NewLine}You drew: {playerHand[playerHand.Count - 1].Value}"
+                    );
                     if (LoseCheck())
                     {
-                        System.Console.WriteLine(PlayerHandCheck());
-                        System.Console.WriteLine("You lose.");
-                        return;
+                        System.Console.WriteLine(HandCheck("You"));
+                        System.Console.WriteLine("\nYou lose.\n");
+                        Restart();
                     }
                     else
                     {
-                        System.Console.WriteLine(PlayerHandCheck());
-                        // Dealer turn here
+                        System.Console.WriteLine(HandCheck("You"));
+                        DealerTurn();
                         Choice();
                     }
                 }
-                if (playerChoice == "stand")
+                else if (playerChoice == "stand")
                 {
-                    // Dealer turn here
-                    if (WinCheck())
+                    DealerTurn();
+                    if (TieCheck())
                     {
-                        System.Console.WriteLine("You Win!");
+                        System.Console.WriteLine("\nYou Tie.\n");
+                        Restart();
+                    }
+                    else if (WinCheck())
+                    {
+                        System.Console.WriteLine("\nYou Win!\n");
+                        Restart();
                     }
                     else
                     {
-                        System.Console.WriteLine("You Lose.");
+                        System.Console.WriteLine("\nYou Lose.\n");
+                        Restart();
                     }
                 }
-                if (playerChoice == "quit")
+                else if (playerChoice == "quit")
                 {
-                    System.Console.WriteLine("Game Over.");
+                    System.Console.WriteLine("\nGame Over.\n");
                     Environment.Exit(0);
                 }
             }
@@ -166,7 +181,24 @@ namespace MiniProject
                 {
                     return true;
                 }
-                return false;
+                else
+                {
+                    return false;
+                }
+            }
+
+            public bool TieCheck()
+            {
+                int playerHandValue = HandValueCheck(playerHand);
+                int dealerHandValue = HandValueCheck(dealerHand);
+                if (playerHandValue == dealerHandValue)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
 
             public bool WinCheck()
@@ -187,15 +219,96 @@ namespace MiniProject
                 }
             }
 
-            public string PlayerHandCheck()
+            public bool DealerLoseCheck()
             {
-                string start = "You currently have: ";
-                string cards = "";
-                foreach (Card card in playerHand)
+                if (HandValueCheck(dealerHand) > 21)
                 {
-                    cards += card.Value + " ";
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            public string HandCheck(string person)
+            {
+                string start = person + " currently hold: ";
+                string cards = "";
+                if (person == "You")
+                {
+                    foreach (Card card in playerHand)
+                    {
+                        cards += card.Value + " ";
+                    }
+                }
+                else
+                {
+                    foreach (Card card in dealerHand)
+                    {
+                        cards += card.Value + " ";
+                    }
                 }
                 return start + cards.Trim();
+            }
+
+            public void DealerTurn()
+            {
+                if (
+                    HandValueCheck(dealerHand) < 17
+                    || HandValueCheck(dealerHand) < HandValueCheck(playerHand)
+                )
+                {
+                    dealerHand.Add(deck.Draw());
+                    System.Console.WriteLine("\nThe Dealer chooses to Hit");
+                    System.Console.WriteLine(HandCheck("The Dealer"));
+                    if (DealerLoseCheck())
+                    {
+                        System.Console.WriteLine("\nYou Win!\n");
+                        Restart();
+                    }
+                }
+                else
+                {
+                    System.Console.WriteLine("\nThe Dealer chooses to Stand");
+                    System.Console.WriteLine(HandCheck("The Dealer"));
+                }
+            }
+
+            public bool StartAgain()
+            {
+                System.Console.WriteLine(
+                    "\nWould you like to play again? Please Choose: 'Yes' or 'Quit'"
+                );
+
+                string? playerChoice = Console.ReadLine()?.ToLower();
+
+                if (playerChoice != "yes" && playerChoice != "quit")
+                {
+                    System.Console.WriteLine("That is not a valid input, please choose again.");
+                    StartAgain();
+                }
+                else if (playerChoice == "yes")
+                {
+                    return true;
+                }
+                else if (playerChoice == "quit")
+                {
+                    return false;
+                }
+                return false;
+            }
+
+            public void Restart()
+            {
+                if (StartAgain())
+                {
+                    GameStart();
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
             }
         }
     }

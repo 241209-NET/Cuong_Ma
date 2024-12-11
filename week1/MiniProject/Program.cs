@@ -72,6 +72,8 @@ namespace MiniProject
         {
             public void Start()
             {
+                System.Console.WriteLine("Game Starts!");
+
                 Deck deck = new Deck();
                 deck.Generate();
 
@@ -82,7 +84,17 @@ namespace MiniProject
                 playerHand.Add(deck.Draw());
                 dealerHand.Add(deck.Draw());
                 dealerHand.Add(deck.Draw());
+
+                System.Console.WriteLine(
+                    $"You drew: {playerHand[0].Value} and {playerHand[1].Value}"
+                );
+                System.Console.WriteLine(
+                    $"Dealer drew: {dealerHand[0].Value} and {dealerHand[1].Value}"
+                );
             }
+
+            public void Choice() { }
+            public bool Check() { }
         }
     }
 }

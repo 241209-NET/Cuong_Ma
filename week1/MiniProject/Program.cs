@@ -93,8 +93,14 @@ namespace MiniProject
                 );
             }
 
-            public void Choice() { }
-            public bool Check() { }
+            public void Choice()
+            {
+                System.Console.WriteLine("Please Choose: 'Hit' or 'Stand'");
+
+                string? playerChoice = Console.ReadLine();
+                if (playerChoice.ToLower() != "hit" || playerChoice.ToLower() != "stand") { }
+            }
+            // public bool Check() { }
         }
     }
 }

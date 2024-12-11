@@ -71,15 +71,15 @@ namespace MiniProject
 
         public class BlackJackGame
         {
+            List<Card> playerHand = [];
+            List<Card> dealerHand = [];
+            Deck deck = new Deck();
+
             public void Start()
             {
                 System.Console.WriteLine("Game Starts!");
 
-                Deck deck = new Deck();
                 deck.Generate();
-
-                List<Card> playerHand = [];
-                List<Card> dealerHand = [];
 
                 playerHand.Add(deck.Draw());
                 playerHand.Add(deck.Draw());
@@ -98,14 +98,72 @@ namespace MiniProject
             {
                 System.Console.WriteLine("Please Choose: 'Hit' or 'Stand'");
 
-                string? playerChoice = Console.ReadLine();
-                if (playerChoice != "hit" || playerChoice != "stand")
+                string? playerChoice = Console.ReadLine()?.ToLower();
+                if (playerChoice != "hit" && playerChoice != "stand")
                 {
                     System.Console.WriteLine("That is not a valid input, please choose again.");
                     Choice();
                 }
+                if (playerChoice == "hit")
+                {
+                    playerHand.Add(deck.Draw());
+                    System.Console.WriteLine($"You drew: {playerHand[playerHand.Count - 1].Value}");
+                    if (LoseCheck())
+                    {
+                        System.Console.WriteLine(PlayerHandCheck());
+                        System.Console.WriteLine("You lose.");
+                        return;
+                    }
+                    else
+                    {
+                        System.Console.WriteLine(PlayerHandCheck());
+                    }
+                }
             }
-            // public bool Check() { }
+
+            public int PlayerHandValueCheck()
+            {
+                int playerHandValue = 0;
+                foreach (Card card in playerHand)
+                {
+                    if (int.TryParse(card.Value, out int numericValue))
+                    {
+                        playerHandValue += numericValue;
+                    }
+                    else if (card.Value == "Jack" || card.Value == "Queen" || card.Value == "King")
+                    {
+                        playerHandValue += 10;
+                    }
+                    else if (card.Value == "Ace")
+                    {
+                        playerHandValue += 11;
+                    }
+                }
+                return playerHandValue;
+            }
+
+            public bool LoseCheck()
+            {
+                int playerHandValue = PlayerHandValueCheck();
+                if (playerHandValue > 21)
+                {
+                    return true;
+                }
+                return false;
+            }
+
+            public bool WinCheck() { }
+
+            public string PlayerHandCheck()
+            {
+                string start = "You currently have: ";
+                string cards = "";
+                foreach (Card card in playerHand)
+                {
+                    cards += card.Value + " ";
+                }
+                return start + cards.Trim();
+            }
         }
     }
 }

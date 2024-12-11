@@ -8,6 +8,8 @@ namespace MiniProject
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to CSharp BlackJack!");
+            BlackJackGame game = new BlackJackGame();
+            game.Start();
         }
 
         public class Card
@@ -68,7 +70,19 @@ namespace MiniProject
 
         public class BlackJackGame
         {
-            public void Start() { }
+            public void Start()
+            {
+                Deck deck = new Deck();
+                deck.Generate();
+
+                List<Card> playerHand = [];
+                List<Card> dealerHand = [];
+
+                playerHand.Add(deck.Draw());
+                playerHand.Add(deck.Draw());
+                dealerHand.Add(deck.Draw());
+                dealerHand.Add(deck.Draw());
+            }
         }
     }
 }

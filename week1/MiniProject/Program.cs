@@ -94,10 +94,10 @@ namespace MiniProject
 
             public void Choice()
             {
-                System.Console.WriteLine("Please Choose: 'Hit' or 'Stand'");
+                System.Console.WriteLine("Please Choose: 'Hit', 'Stand', or 'Quit'");
 
                 string? playerChoice = Console.ReadLine()?.ToLower();
-                if (playerChoice != "hit" && playerChoice != "stand")
+                if (playerChoice != "hit" && playerChoice != "stand" && playerChoice != "quit")
                 {
                     System.Console.WriteLine("That is not a valid input, please choose again.");
                     Choice();
@@ -130,6 +130,11 @@ namespace MiniProject
                     {
                         System.Console.WriteLine("You Lose.");
                     }
+                }
+                if (playerChoice == "quit")
+                {
+                    System.Console.WriteLine("Game Over.");
+                    return;
                 }
             }
 

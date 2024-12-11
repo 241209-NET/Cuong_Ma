@@ -10,6 +10,7 @@ namespace MiniProject
             Console.WriteLine("Welcome to CSharp BlackJack!");
             BlackJackGame game = new BlackJackGame();
             game.Start();
+            game.Choice();
         }
 
         public class Card
@@ -98,7 +99,11 @@ namespace MiniProject
                 System.Console.WriteLine("Please Choose: 'Hit' or 'Stand'");
 
                 string? playerChoice = Console.ReadLine();
-                if (playerChoice.ToLower() != "hit" || playerChoice.ToLower() != "stand") { }
+                if (playerChoice != "hit" || playerChoice != "stand")
+                {
+                    System.Console.WriteLine("That is not a valid input, please choose again.");
+                    Choice();
+                }
             }
             // public bool Check() { }
         }

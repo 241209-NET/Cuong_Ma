@@ -117,34 +117,46 @@ namespace MiniProject
                     else
                     {
                         System.Console.WriteLine(PlayerHandCheck());
+                        Choice();
+                    }
+                }
+                if (playerChoice == "stand")
+                {
+                    if (WinCheck())
+                    {
+                        System.Console.WriteLine("You Win!");
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("You Lose.");
                     }
                 }
             }
 
-            public int PlayerHandValueCheck()
+            public int HandValueCheck(List<Card> hand)
             {
-                int playerHandValue = 0;
-                foreach (Card card in playerHand)
+                int handValue = 0;
+                foreach (Card card in hand)
                 {
                     if (int.TryParse(card.Value, out int numericValue))
                     {
-                        playerHandValue += numericValue;
+                        handValue += numericValue;
                     }
                     else if (card.Value == "Jack" || card.Value == "Queen" || card.Value == "King")
                     {
-                        playerHandValue += 10;
+                        handValue += 10;
                     }
                     else if (card.Value == "Ace")
                     {
-                        playerHandValue += 11;
+                        handValue += 11;
                     }
                 }
-                return playerHandValue;
+                return handValue;
             }
 
             public bool LoseCheck()
             {
-                int playerHandValue = PlayerHandValueCheck();
+                int playerHandValue = HandValueCheck(playerHand);
                 if (playerHandValue > 21)
                 {
                     return true;
@@ -152,7 +164,23 @@ namespace MiniProject
                 return false;
             }
 
-            public bool WinCheck() { }
+            public bool WinCheck()
+            {
+                if (
+                    (
+                        HandValueCheck(playerHand) <= 21
+                        && HandValueCheck(playerHand) > HandValueCheck(dealerHand)
+                    )
+                    || HandValueCheck(dealerHand) > 21
+                )
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
 
             public string PlayerHandCheck()
             {

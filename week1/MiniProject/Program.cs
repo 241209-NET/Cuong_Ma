@@ -120,11 +120,13 @@ namespace MiniProject
                     else
                     {
                         System.Console.WriteLine(PlayerHandCheck());
+                        // Dealer turn here
                         Choice();
                     }
                 }
                 if (playerChoice == "stand")
                 {
+                    // Dealer turn here
                     if (WinCheck())
                     {
                         System.Console.WriteLine("You Win!");

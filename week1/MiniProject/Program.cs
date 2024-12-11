@@ -134,7 +134,7 @@ namespace MiniProject
                 if (playerChoice == "quit")
                 {
                     System.Console.WriteLine("Game Over.");
-                    return;
+                    Environment.Exit(0);
                 }
             }
 

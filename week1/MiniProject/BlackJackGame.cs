@@ -44,13 +44,13 @@ namespace MiniProject
                 );
                 if (LoseCheck())
                 {
-                    System.Console.WriteLine(HandCheck("You"));
+                    System.Console.WriteLine(HandCheck("You", playerHand));
                     System.Console.WriteLine("\nYou lose.\n");
                     Restart();
                 }
                 else
                 {
-                    System.Console.WriteLine(HandCheck("You"));
+                    System.Console.WriteLine(HandCheck("You", playerHand));
                     DealerTurn();
                     Choice();
                 }
@@ -174,7 +174,7 @@ namespace MiniProject
             }
         }
 
-        public string HandCheck(string person)
+        public string HandCheck(string person, List<Card> hand)
         {
             string start = person + " currently hold: ";
             string cards = "";
@@ -192,7 +192,7 @@ namespace MiniProject
                     cards += card.Value + " ";
                 }
             }
-            return start + cards.Trim();
+            return start + cards.Trim() + $" ({HandValueCheck(hand)})";
         }
 
         public void DealerTurn()
@@ -204,7 +204,7 @@ namespace MiniProject
             {
                 dealerHand.Add(deck.Draw());
                 System.Console.WriteLine("\nThe Dealer chooses to Hit");
-                System.Console.WriteLine(HandCheck("The Dealer"));
+                System.Console.WriteLine(HandCheck("The Dealer", dealerHand));
                 if (DealerLoseCheck())
                 {
                     System.Console.WriteLine("\nYou Win!\n");
@@ -214,7 +214,7 @@ namespace MiniProject
             else
             {
                 System.Console.WriteLine("\nThe Dealer chooses to Stand");
-                System.Console.WriteLine(HandCheck("The Dealer"));
+                System.Console.WriteLine(HandCheck("The Dealer", dealerHand));
             }
         }
 

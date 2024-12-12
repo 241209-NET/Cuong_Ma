@@ -1,5 +1,7 @@
 ﻿namespace LinqDemo;
 
+using LinqDemo.Utilities;
+
 class Program
 {
     static void Main(string[] args)
@@ -66,6 +68,9 @@ class Program
         double avg = carList.Average(c => c.MPG);
 
         int numOfCars = carList.Count(c => c.Make.ToLower().Contains('a'));
+
+        bool test = Util.IsEven(40);
+        System.Console.WriteLine(test);
     }
 }
 

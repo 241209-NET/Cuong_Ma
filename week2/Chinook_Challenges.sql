@@ -2,6 +2,9 @@
 
 -- BASIC CHALLENGES
 -- List all customers (full name, customer id, and country) who are not in the USA
+SELECT FirstName + ' ' + LastName as FullName, CustomerId, Country
+FROM Customer
+WHERE Country != 'USA'
     
 -- List all customers from Brazil
     

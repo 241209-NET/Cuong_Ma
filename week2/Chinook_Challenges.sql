@@ -7,31 +7,66 @@ FROM Customer
 WHERE Country != 'USA'
     
 -- List all customers from Brazil
+SELECT FirstName, LastName, CustomerId, Country
+FROM Customer
+WHERE Country = 'Brazil';
     
 -- List all sales agents
+SELECT DISTINCT FirstName, LastName, EmployeeId, Title
+FROM Employee
+WHERE Title = 'Sales Support Agent';
 
 -- Retrieve a list of all countries in billing addresses on invoices
+SELECT DISTINCT BillingCountry
+FROM Invoice;
 
 -- Retrieve how many invoices there were in 2009, and what was the sales total for that year?
+SELECT COUNT(*) AS InvoiceCount, SUM(Total) AS SalesTotal
+FROM Invoice
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
 
     -- (challenge: find the invoice count sales total for every year using one query)
 
 
 -- how many line items were there for invoice #37
+SELECT COUNT(*) AS ItemCount
+FROM InvoiceLine
+WHERE InvoiceId = 37;
 
 -- how many invoices per country? BillingCountry  # of invoices -
+SELECT BillingCountry, COUNT(*) AS InvoiceCount
+FROM Invoice
+GROUP BY BillingCountry
+ORDER BY InvoiceCount DESC;
 
 -- Retrieve the total sales per country, ordered by the highest total sales first.
+SELECT BillingCountry, SUM(Total) AS TotalSales
+FROM Invoice
+GROUP BY BillingCountry
+ORDER BY TotalSales DESC;
 
 
 -- JOINS CHALLENGES
 -- Every Album by Artist
+SELECT Artist.Name AS ArtistName, Album.Title AS AlbumTitle
+FROM Album
+JOIN Artist ON Album.ArtistId = Artist.ArtistId
+ORDER BY AlbumTitle;
 
 -- All songs of the rock genre
+SELECT Track.Name AS SongName, Genre.Name AS Genre
+FROM Track
+JOIN Genre ON Track.GenreId = Genre.GenreId
+WHERE Genre.Name = 'Rock';
 
 -- Show all invoices of customers from brazil (mailing address not billing)
+SELECT Invoice.InvoiceId, Invoice.Total, Customer.FirstName, Customer.LastName, Customer.Country
+FROM Invoice
+JOIN Customer ON Invoice.CustomerId = Customer.CustomerId
+WHERE Customer.Country = 'Brazil';
 
 -- Show all invoices together with the name of the sales agent for each one
+
 
 -- Which sales agent made the most sales in 2009?
 

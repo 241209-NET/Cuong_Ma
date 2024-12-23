@@ -12,3 +12,6 @@ This project is a backend API for a Social Media application where users can cre
 - **Backend**: ASP.NET Core Web API, Entity Framework Core, C#, LINQ.
 - **Database**: SQL Server (using Docker).
 - **Testing**: xUnit.
+
+
+![ERD](KvdVpSm.jpg)

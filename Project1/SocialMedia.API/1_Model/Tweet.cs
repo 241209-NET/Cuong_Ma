@@ -4,7 +4,7 @@ public class Tweet
 {
     public int Id { get; set; }
     public required string Body { get; set; }
-    public int Likes { get; set; }
+    public int Likes { get; set; } = 0;
     public int? ParentId { get; set; }
     public DateTime CreatedAt { get; set; }
 

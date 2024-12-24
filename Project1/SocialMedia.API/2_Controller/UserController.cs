@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SocialMedia.API.Controller;
 
-using SocialMedia.API.Model;
+using SocialMedia.API.DTO;
 using SocialMedia.API.Service;
 
 [Route("api/[controller]")]
@@ -14,5 +14,102 @@ public class UserController : ControllerBase
     public UserController(IUserService userService)
     {
         _userService = userService;
+    }
+
+    // POST: api/User
+    [HttpPost]
+    public IActionResult CreateUser(UserInDTO newUser)
+    {
+        if (newUser == null)
+        {
+            return BadRequest("User data cannot be null.");
+        }
+
+        try
+        {
+            var createdUser = _userService.CreateUser(newUser);
+            return Ok(createdUser);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    // GET: api/User
+    [HttpGet]
+    public IActionResult GetAllUsers()
+    {
+        try
+        {
+            var users = _userService.GetAllUsers();
+            return Ok(users);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    // GET: api/User/{id}
+    [HttpGet("{id}")]
+    public IActionResult GetUserById(int id)
+    {
+        try
+        {
+            var user = _userService.GetUserById(id);
+            return Ok(user);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    // GET: api/User/username/{username}
+    [HttpGet("username/{username}")]
+    public IActionResult GetUserByUsername(string username)
+    {
+        if (string.IsNullOrWhiteSpace(username))
+        {
+            return BadRequest("Username cannot be null or empty.");
+        }
+
+        try
+        {
+            var user = _userService.GetUserByUsername(username);
+            return Ok(user);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    // DELETE: api/User/{id}
+    [HttpDelete("{id}")]
+    public IActionResult DeleteUserById(int id)
+    {
+        try
+        {
+            var deletedUser = _userService.DeleteUserById(id);
+            return Ok(deletedUser);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
 }

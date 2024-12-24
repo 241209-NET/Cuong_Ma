@@ -14,7 +14,7 @@ This project is a backend API for a Social Media application where users can cre
 - **Testing**: xUnit.
 
 ## ERD
-![ERD](KvdVpSm.jpg)
+![ERD](./9knLv99.jpg)
 
 ## Stretch Features
 - Implement a frontend via React

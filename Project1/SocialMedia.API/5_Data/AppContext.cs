@@ -3,11 +3,11 @@ using SocialMedia.API.Model;
 
 namespace SocialMedia.API.Data;
 
-public partial class AppContext : DbContext
+public partial class SocialMediaContext : DbContext
 {
-    public AppContext() { }
+    public SocialMediaContext() { }
 
-    public AppContext(DbContextOptions<AppContext> options)
+    public SocialMediaContext(DbContextOptions<SocialMediaContext> options)
         : base(options) { }
 
     public virtual DbSet<User>? Users { get; set; } = null!;

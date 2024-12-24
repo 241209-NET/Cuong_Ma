@@ -1,41 +1,43 @@
 #nullable disable
+using SocialMedia.API.Data;
 using SocialMedia.API.Model;
 
 namespace SocialMedia.API.Repo;
 
 public class UserRepo : IUserRepo
 {
-    private readonly Data.AppContext _appContext;
+    private readonly SocialMediaContext _SocialMediaContext;
 
-    public UserRepo(Data.AppContext appContext) => _appContext = appContext;
+    public UserRepo(SocialMediaContext SocialMediaContext) =>
+        _SocialMediaContext = SocialMediaContext;
 
     public User CreateUser(User newUser)
     {
-        _appContext.Users.Add(newUser);
-        _appContext.SaveChanges();
+        _SocialMediaContext.Users.Add(newUser);
+        _SocialMediaContext.SaveChanges();
         return newUser;
     }
 
     public IEnumerable<User> GetAllUsers()
     {
-        return _appContext.Users.ToList();
+        return _SocialMediaContext.Users.ToList();
     }
 
     public User GetUserById(int id)
     {
-        return _appContext.Users.Find(id);
+        return _SocialMediaContext.Users.Find(id);
     }
 
     public User GetUserByUsername(string username)
     {
-        return _appContext.Users.FirstOrDefault(u => u.Username == username);
+        return _SocialMediaContext.Users.FirstOrDefault(u => u.Username == username);
     }
 
     public User DeleteUserById(int id)
     {
         var user = GetUserById(id);
-        _appContext.Users.Remove(user);
-        _appContext.SaveChanges();
+        _SocialMediaContext.Users.Remove(user);
+        _SocialMediaContext.SaveChanges();
         return user;
     }
 }

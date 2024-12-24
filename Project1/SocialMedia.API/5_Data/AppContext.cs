@@ -10,6 +10,6 @@ public partial class AppContext : DbContext
     public AppContext(DbContextOptions<AppContext> options)
         : base(options) { }
 
-    public virtual DbSet<User> Users { get; set; }
-    public virtual DbSet<Tweet> Tweets { get; set; }
+    public virtual DbSet<User>? Users { get; set; } = null!;
+    public virtual DbSet<Tweet>? Tweets { get; set; } = null!;
 }

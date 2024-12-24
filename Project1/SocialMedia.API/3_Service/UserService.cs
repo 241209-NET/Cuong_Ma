@@ -49,8 +49,6 @@ public class UserService : IUserService
     public User? DeleteUserById(int id)
     {
         var deletedUser = _userRepo.DeleteUserById(id);
-        if (deletedUser == null)
-            throw new InvalidOperationException($"User with ID {id} not found.");
         return deletedUser;
     }
 }

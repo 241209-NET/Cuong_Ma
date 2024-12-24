@@ -35,7 +35,8 @@ public class UserRepo : IUserRepo
 
     public User DeleteUserById(int id)
     {
-        var user = GetUserById(id);
+        var user =
+            GetUserById(id) ?? throw new InvalidOperationException($"User with ID {id} not found.");
         _SocialMediaContext.Users.Remove(user);
         _SocialMediaContext.SaveChanges();
         return user;

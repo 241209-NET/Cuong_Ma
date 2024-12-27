@@ -16,6 +16,21 @@ public class TweetController : ControllerBase
         _tweetService = tweetService;
     }
 
+    // GET: api/tweet
+    [HttpGet]
+    public IActionResult GetAllTweets()
+    {
+        try
+        {
+            var tweets = _tweetService.GetAllTweets();
+            return Ok(tweets);
+        }
+        catch (ArgumentException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+    }
+
     // POST: api/Tweet
     [HttpPost]
     public IActionResult CreateTweet(TweetInDTO newTweet)

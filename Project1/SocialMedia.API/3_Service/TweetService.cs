@@ -65,6 +65,17 @@ public class TweetService : ITweetService
         return tweet;
     }
 
+    public IEnumerable<Tweet> GetAllTweets()
+    {
+        var tweets = _tweetRepo.GetAllTweets();
+        if (!tweets.Any())
+        {
+            throw new ArgumentException("No tweets found.");
+        }
+
+        return tweets;
+    }
+
     public IEnumerable<Tweet> GetTweetsByUserId(int userId)
     {
         if (userId <= 0)

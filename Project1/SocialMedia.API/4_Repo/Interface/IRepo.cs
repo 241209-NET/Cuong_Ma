@@ -15,6 +15,7 @@ public interface ITweetRepo
 {
     Tweet CreateTweet(Tweet newTweet);
     Tweet? GetTweetById(int id);
+    IEnumerable<Tweet> GetAllTweets();
     IEnumerable<Tweet> GetTweetsByUserId(int userId);
     Tweet? UpdateTweet(int id, string newBody);
     bool LikeTweet(int id);

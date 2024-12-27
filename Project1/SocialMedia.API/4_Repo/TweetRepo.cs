@@ -24,6 +24,11 @@ public class TweetRepo : ITweetRepo
         return _SocialMediaContext.Tweets.Find(id);
     }
 
+    public IEnumerable<Tweet> GetAllTweets()
+    {
+        return _SocialMediaContext.Tweets.OrderByDescending(t => t.CreatedAt).ToList();
+    }
+
     public IEnumerable<Tweet> GetTweetsByUserId(int userId)
     {
         return _SocialMediaContext.Tweets.Where(t => t.UserId == userId).ToList();

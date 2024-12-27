@@ -10,3 +10,15 @@ public interface IUserRepo
     User? GetUserByUsername(string username);
     User? DeleteUserById(int id);
 }
+
+public interface ITweetRepo
+{
+    Tweet CreateTweet(Tweet newTweet);
+    Tweet? GetTweetById(int id);
+    IEnumerable<Tweet> GetTweetsByUserId(int userId);
+    Tweet? UpdateTweet(int id, string newBody);
+    bool LikeTweet(int id);
+    bool UnlikeTweet(int id);
+    bool DeleteTweet(int id);
+    IEnumerable<Tweet> GetRepliesForTweet(int tweetId);
+}

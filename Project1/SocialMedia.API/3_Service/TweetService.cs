@@ -6,8 +6,13 @@ namespace SocialMedia.API.Service;
 public class TweetService : ITweetService
 {
     private readonly ITweetRepo _tweetRepo;
+    private readonly IUserRepo _userRepo;
 
-    public TweetService(ITweetRepo tweetRepo) => _tweetRepo = tweetRepo;
+    public TweetService(ITweetRepo tweetRepo, IUserRepo userRepo)
+    {
+        _tweetRepo = tweetRepo;
+        _userRepo = userRepo;
+    }
 
     public Tweet CreateTweet(Tweet newTweet)
     {
@@ -32,6 +37,13 @@ public class TweetService : ITweetService
             }
         }
 
+        var user = _userRepo.GetUserById(newTweet.UserId);
+        if (user == null)
+        {
+            throw new ArgumentException($"User with ID {newTweet.UserId} does not exist.");
+        }
+
+        newTweet.User = user;
         newTweet.CreatedAt = DateTime.UtcNow;
         newTweet.Likes = 0;
 

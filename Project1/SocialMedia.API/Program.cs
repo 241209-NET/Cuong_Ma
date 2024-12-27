@@ -17,9 +17,11 @@ builder.Services.AddSwaggerGen();
 
 //Dependency Inject the proper services
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITweetService, TweetService>();
 
 //Dependency Inject the proper repositories
 builder.Services.AddScoped<IUserRepo, UserRepo>();
+builder.Services.AddScoped<ITweetRepo, TweetRepo>();
 
 //Add controller
 builder.Services.AddControllers();

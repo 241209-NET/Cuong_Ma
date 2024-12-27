@@ -15,7 +15,7 @@ public interface IUserService
 
 public interface ITweetService
 {
-    Tweet CreateTweet(Tweet newTweet);
+    Tweet CreateTweet(TweetInDTO newTweet);
     Tweet? GetTweetById(int id);
     IEnumerable<Tweet> GetTweetsByUserId(int userId);
     Tweet? UpdateTweet(int id, string newBody);

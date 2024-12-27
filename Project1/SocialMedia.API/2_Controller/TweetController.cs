@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SocialMedia.API.DTO;
 using SocialMedia.API.Model;
 using SocialMedia.API.Service;
 
@@ -17,7 +18,7 @@ public class TweetController : ControllerBase
 
     // POST: api/Tweet
     [HttpPost]
-    public IActionResult CreateTweet(Tweet newTweet)
+    public IActionResult CreateTweet(TweetInDTO newTweet)
     {
         try
         {
@@ -66,7 +67,7 @@ public class TweetController : ControllerBase
 
     // PUT: api/Tweet/{id}
     [HttpPut("{id}")]
-    public IActionResult UpdateTweet(int id, [FromBody] string newBody)
+    public IActionResult UpdateTweet(int id, string newBody)
     {
         try
         {

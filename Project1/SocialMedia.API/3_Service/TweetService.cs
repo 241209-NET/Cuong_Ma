@@ -1,5 +1,7 @@
+using SocialMedia.API.DTO;
 using SocialMedia.API.Model;
 using SocialMedia.API.Repo;
+using SocialMedia.API.Util;
 
 namespace SocialMedia.API.Service;
 
@@ -14,12 +16,14 @@ public class TweetService : ITweetService
         _userRepo = userRepo;
     }
 
-    public Tweet CreateTweet(Tweet newTweet)
+    public Tweet CreateTweet(TweetInDTO tweetDTO)
     {
-        if (newTweet == null)
+        if (tweetDTO == null)
         {
-            throw new ArgumentNullException(nameof(newTweet), "Tweet object cannot be null.");
+            throw new ArgumentNullException(nameof(tweetDTO), "Tweet DTO cannot be null.");
         }
+
+        var newTweet = Utilities.TweetDTOToObject(tweetDTO);
 
         if (string.IsNullOrWhiteSpace(newTweet.Body))
         {

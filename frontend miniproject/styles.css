@@ -41,7 +41,7 @@ button {
     cursor: pointer; 
 }
 
-/* Optional hover effect */
+
 button:hover {
     background-color: #e0e0e0; 
 }

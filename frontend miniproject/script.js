@@ -10,3 +10,16 @@ paragraph.addEventListener('mouseover', function () {
 paragraph.addEventListener('mouseout', function () {
     paragraph.style.color = 'black';
 });
+
+
+const toggleButton = document.getElementById('toggle-color-button');
+let isDefaultColor = true;
+
+toggleButton.addEventListener('click', function () {
+    if (isDefaultColor) {
+        paragraph.style.color = 'red';
+    } else {
+        paragraph.style.color = 'black';
+    }
+    isDefaultColor = !isDefaultColor;
+});

@@ -43,7 +43,7 @@ public class TweetRepo : ITweetRepo
 
     public bool LikeTweet(int id)
     {
-        var tweet = _SocialMediaContext.Tweets.FirstOrDefault(t => t.Id == id);
+        var tweet = _SocialMediaContext.Tweets.Find(id);
         tweet.Likes++;
         _SocialMediaContext.SaveChanges();
         return true;
@@ -51,7 +51,7 @@ public class TweetRepo : ITweetRepo
 
     public bool UnlikeTweet(int id)
     {
-        var tweet = _SocialMediaContext.Tweets.FirstOrDefault(t => t.Id == id);
+        var tweet = _SocialMediaContext.Tweets.Find(id);
         tweet.Likes--;
         _SocialMediaContext.SaveChanges();
         return true;
@@ -59,7 +59,7 @@ public class TweetRepo : ITweetRepo
 
     public bool DeleteTweet(int id)
     {
-        var tweet = _SocialMediaContext.Tweets.FirstOrDefault(t => t.Id == id);
+        var tweet = _SocialMediaContext.Tweets.Find(id);
         _SocialMediaContext.Tweets.Remove(tweet);
         _SocialMediaContext.SaveChanges();
         return true;

@@ -1,6 +1,7 @@
 #nullable disable
 using SocialMedia.API.Data;
 using SocialMedia.API.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace SocialMedia.API.Repo;
 
@@ -25,7 +26,10 @@ public class TweetRepo : ITweetRepo
 
     public IEnumerable<Tweet> GetAllTweets()
     {
-        return _SocialMediaContext.Tweets.OrderByDescending(t => t.CreatedAt).ToList();
+        return _SocialMediaContext.Tweets
+        .Include(t => t.User) 
+        .OrderByDescending(t => t.CreatedAt) 
+        .ToList();
     }
 
     public IEnumerable<Tweet> GetTweetsByUserId(int userId)

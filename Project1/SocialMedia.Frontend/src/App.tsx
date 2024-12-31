@@ -157,7 +157,7 @@ const App = () => {
     <div className="min-h-screen bg-slate-800 text-white">
       {/* top navbar */}
       <div className="bg-slate-600 border-b border-slate-700">
-        <div className="max-w-2xl mx-auto flex justify-between items-center py-4 px-4">
+        <div className="max-w-2xl flex justify-start items-center py-4 px-4">
           <h1 className="text-xl font-bold text-white">Cuong's Social Media APP</h1>
         </div>
       </div>

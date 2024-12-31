@@ -132,6 +132,7 @@ const App = () => {
       {replyParentId === tweet.id && (
         <div className="mt-2 p-4">
           <Textarea
+            className="border-slate-600 placeholder:text-slate-300"
             placeholder="Write your reply..."
             value={replyBody}
             onChange={(e) => setReplyBody(e.target.value)}

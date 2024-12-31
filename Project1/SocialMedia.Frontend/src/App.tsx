@@ -145,7 +145,7 @@ const App = () => {
           </Button>
         </div>
       )}
-      {/* Render replies */}
+      {/* render replies if avail */}
       <div className="ml-6 mt-4 space-y-4">
         {tweets
           .filter((reply) => reply.parentId === tweet.id)

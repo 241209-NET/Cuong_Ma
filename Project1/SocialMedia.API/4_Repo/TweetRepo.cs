@@ -35,7 +35,7 @@ public class TweetRepo : ITweetRepo
 
     public Tweet UpdateTweet(int id, string newBody)
     {
-        var tweet = _SocialMediaContext.Tweets.FirstOrDefault(t => t.Id == id);
+        var tweet = _SocialMediaContext.Tweets.Find(id);
         tweet.Body = newBody;
         _SocialMediaContext.SaveChanges();
         return tweet;

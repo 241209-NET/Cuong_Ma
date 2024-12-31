@@ -13,7 +13,6 @@ public class TweetRepo : ITweetRepo
 
     public Tweet CreateTweet(Tweet newTweet)
     {
-        newTweet.CreatedAt = DateTime.UtcNow;
         _SocialMediaContext.Tweets.Add(newTweet);
         _SocialMediaContext.SaveChanges();
         return newTweet;

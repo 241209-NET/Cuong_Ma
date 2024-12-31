@@ -25,10 +25,9 @@ public class UserService : IUserService
 
     public User? GetUserById(int id)
     {
-        var foundUser = _userRepo.GetUserById(id);
-
-        if (foundUser == null)
-            throw new InvalidOperationException($"User with ID {id} not found.");
+        var foundUser =
+            _userRepo.GetUserById(id)
+            ?? throw new ArgumentException($"User with ID {id} not found.");
         return foundUser;
     }
 
@@ -38,11 +37,9 @@ public class UserService : IUserService
         {
             throw new ArgumentException("Username cannot be null or empty.", nameof(username));
         }
-        var foundUser = _userRepo.GetUserByUsername(username);
-        if (foundUser == null)
-        {
-            throw new InvalidOperationException($"User with username '{username}' not found.");
-        }
+        var foundUser =
+            _userRepo.GetUserByUsername(username)
+            ?? throw new InvalidOperationException($"User with username '{username}' not found.");
         return foundUser;
     }
 

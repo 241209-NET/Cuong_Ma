@@ -60,13 +60,9 @@ public class UserController : ControllerBase
             var user = _userService.GetUserById(id);
             return Ok(user);
         }
-        catch (InvalidOperationException ex)
+        catch (ArgumentException ex)
         {
-            return NotFound(ex.Message);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Internal server error: {ex.Message}");
+            return NotFound(new { message = ex.Message });
         }
     }
 
@@ -88,9 +84,9 @@ public class UserController : ControllerBase
         {
             return NotFound(ex.Message);
         }
-        catch (Exception ex)
+        catch (ArgumentException ex)
         {
-            return StatusCode(500, $"Internal server error: {ex.Message}");
+            return BadRequest(new { message = ex.Message });
         }
     }
 
@@ -103,13 +99,9 @@ public class UserController : ControllerBase
             var deletedUser = _userService.DeleteUserById(id);
             return Ok(deletedUser);
         }
-        catch (InvalidOperationException ex)
+        catch (ArgumentException ex)
         {
-            return NotFound(ex.Message);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Internal server error: {ex.Message}");
+            return NotFound(new { message = ex.Message });
         }
     }
 }

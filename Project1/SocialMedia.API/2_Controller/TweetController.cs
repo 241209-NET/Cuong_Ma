@@ -16,7 +16,7 @@ public class TweetController : ControllerBase
         _tweetService = tweetService;
     }
 
-    // GET: api/tweet
+    // GET: api/Tweet
     [HttpGet]
     public IActionResult GetAllTweets()
     {

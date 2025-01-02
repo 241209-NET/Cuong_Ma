@@ -43,7 +43,7 @@ public class ServiceTests
     }
 
     [Fact]
-    public void GetAllUsers_ShouldReturnAllUsers()
+    public void GetAllUsers_ReturnAllUsersTest()
     {
         // Arrange
         var users = new List<User>
@@ -74,7 +74,7 @@ public class ServiceTests
     }
 
     [Fact]
-    public void GetUserById_ShouldReturnUser()
+    public void GetUserById_ReturnUserTest()
     {
         // Arrange
         var user = new User
@@ -96,7 +96,7 @@ public class ServiceTests
     }
 
     [Fact]
-    public void DeleteUserById_ShouldReturnDeletedUser()
+    public void DeleteUserById_ReturnDeletedUserTest()
     {
         // Arrange
         var user = new User
@@ -118,7 +118,7 @@ public class ServiceTests
     }
 
     [Fact]
-    public void GetTweetById_ShouldReturnTweet()
+    public void GetTweetById_ReturnTweetTest()
     {
         // Arrange
         var tweet = new Tweet
@@ -141,7 +141,7 @@ public class ServiceTests
     }
 
     [Fact]
-    public void GetAllTweets_ShouldReturnAllTweets()
+    public void GetAllTweets_ReturnAllTweetsTest()
     {
         // Arrange
         var tweets = new List<Tweet>
@@ -174,7 +174,7 @@ public class ServiceTests
     }
 
     [Fact]
-    public void LikeTweet_ShouldIncrementLikes()
+    public void LikeTweet_IncrementLikesTest()
     {
         // Arrange
         var tweet = new Tweet
@@ -198,7 +198,7 @@ public class ServiceTests
     }
 
     [Fact]
-    public void UnlikeTweet_ShouldDecrementLikes()
+    public void UnlikeTweet_DecrementLikesTest()
     {
         // Arrange
         var tweet = new Tweet
